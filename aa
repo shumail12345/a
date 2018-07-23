@@ -1,0 +1,12 @@
+FROM ubuntu
+MAINTAINER shumail <shumail.aaren@gmail.com>
+RUN apt-get update && \
+    apt-get install -y apt-utils && \
+    apt-get install nodejs -y && \
+    apt-get install npm -y
+CMD ln -s /usr/bin/nodejs /usr/bin/node/
+RUN npm install -g http-server
+ADD index.html /usr/apps/hello-docker/index.html
+WORKDIR /usr/apps/hello-docker/
+CMD http-server -s
+                   
